@@ -1,6 +1,6 @@
 import Image from "next/image";
-import portrait from "@/public/images/arbab-portrait.jpg";
-import casual from "@/public/images/arbab-casual.jpg";
+import heroPortrait from "@/public/images/arbab-hero.png";
+import aboutPortrait from "@/public/images/arbab-about.png";
 import SiteExplorer from "./site-explorer";
 import {
   experience,
@@ -92,11 +92,11 @@ export default function Home() {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-white/5 bg-ink-950/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+        <div className="mx-auto flex max-w-[min(100%-2rem,100rem)] items-center justify-between px-4 py-4 sm:px-6">
           <a href="#top" className="font-display text-2xl font-extrabold italic tracking-tight text-white">
             ARBAB<span className="text-brand-yellow">.</span>
           </a>
-          <nav aria-label="Main" className="hidden gap-7 text-sm font-medium text-slate-300 md:flex">
+          <nav aria-label="Main" className="hidden gap-5 text-sm font-medium text-slate-300 lg:flex">
             {nav.map((item) => (
               <a key={item.href} href={item.href} className="transition hover:text-brand-yellow">
                 {item.label}
@@ -105,10 +105,17 @@ export default function Home() {
           </nav>
           <a
             href="#contact"
-            className="rounded-full bg-brand-yellow px-5 py-2 text-sm font-bold text-ink-950 transition hover:bg-brand-yellow-light"
+            className="rounded-full bg-brand-yellow px-4 py-2 text-sm font-bold text-ink-950 transition hover:bg-brand-yellow-light sm:px-5"
           >
             Hire me
           </a>
+          <nav aria-label="Quick links" className="flex max-w-[58vw] gap-4 overflow-x-auto text-xs font-medium text-slate-300 sm:max-w-none lg:hidden">
+            {nav.filter((item) => item.href !== "#contact").map((item) => (
+              <a key={item.href} href={item.href} className="shrink-0 transition hover:text-brand-yellow">
+                {item.label}
+              </a>
+            ))}
+          </nav>
         </div>
       </header>
 
@@ -125,7 +132,7 @@ export default function Home() {
             className="absolute -left-40 bottom-0 size-[28rem] rounded-full bg-indigo-600/20 blur-[120px]"
           />
 
-          <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 pb-20 pt-14 sm:px-6 md:pt-20 lg:grid-cols-[1.15fr_0.85fr] lg:pb-28">
+          <div className="relative mx-auto grid max-w-[min(100%-2rem,100rem)] items-center gap-10 px-4 pb-20 pt-14 sm:px-6 md:pt-20 lg:grid-cols-[0.95fr_1.05fr] lg:pb-28">
             <div>
               <p className="inline-block -skew-x-6 bg-brand-yellow px-4 py-1.5 font-display text-xl font-extrabold uppercase italic text-ink-950">
                 Hi, I&apos;m
@@ -175,12 +182,12 @@ export default function Home() {
               />
               <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-ink-800">
                 <Image
-                  src={portrait}
-                  alt="Portrait of Arbab Khizar"
+                  src={heroPortrait}
+                  alt="Arbab Khizar working at his desk"
                   priority
                   placeholder="blur"
-                  sizes="(min-width: 1024px) 420px, 90vw"
-                  className="aspect-[4/5] w-full object-cover object-top"
+                  sizes="(min-width: 1024px) 700px, 90vw"
+                  className="aspect-[6/5] w-full object-cover object-[65%_center]"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink-950/90 to-transparent" />
               </div>
@@ -206,7 +213,7 @@ export default function Home() {
 
         {/* Stats bar */}
         <section aria-label="Highlights" className="border-y border-white/10 bg-ink-900">
-          <dl className="mx-auto grid max-w-6xl grid-cols-2 px-4 sm:px-6 md:grid-cols-4">
+          <dl className="mx-auto grid max-w-[min(100%-2rem,100rem)] grid-cols-2 px-4 sm:px-6 md:grid-cols-4">
             {stats.map((stat, index) => (
               <div
                 key={stat.label}
@@ -224,19 +231,19 @@ export default function Home() {
         </section>
 
         {/* About */}
-        <section id="about" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-          <div className="grid items-center gap-14 lg:grid-cols-[0.8fr_1.2fr]">
-            <div className="relative mx-auto w-full max-w-xs">
+        <section id="about" className="mx-auto max-w-[min(100%-2rem,100rem)] px-4 py-24 sm:px-6">
+          <div className="grid items-center gap-14 lg:grid-cols-[1fr_1.2fr]">
+            <div className="relative mx-auto w-full max-w-xl">
               <div
                 aria-hidden="true"
                 className="absolute -inset-3 rotate-3 rounded-[2rem] border-2 border-brand-yellow/70"
               />
               <Image
-                src={casual}
-                alt="Arbab Khizar"
+                src={aboutPortrait}
+                alt="Arbab Khizar in his workspace"
                 placeholder="blur"
-                sizes="(min-width: 1024px) 320px, 80vw"
-                className="relative aspect-[3/4] w-full rounded-[2rem] object-cover object-top"
+                sizes="(min-width: 1024px) 560px, 94vw"
+                className="relative aspect-[6/5] w-full rounded-[2rem] object-cover object-top"
               />
             </div>
 
@@ -282,7 +289,7 @@ export default function Home() {
 
         {/* Services */}
         <section id="services" className="border-t border-white/5 bg-ink-900/50">
-          <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
+          <div className="mx-auto max-w-[min(100%-2rem,100rem)] px-4 py-24 sm:px-6">
             <SectionHeading
               eyebrow="What I do"
               title={
@@ -321,8 +328,9 @@ export default function Home() {
         </section>
 
         {/* Featured work */}
-        <section id="work" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-          <SectionHeading
+        <section id="work" className="mx-auto max-w-[min(100%-2rem,100rem)] px-4 py-24 sm:px-6">
+          <div className="mt-12">
+            <SectionHeading
             eyebrow="Featured work"
             title={
               <>
@@ -336,7 +344,7 @@ export default function Home() {
             {featured.map((project, index) => (
               <article
                 key={project.name}
-                className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-ink-900 to-ink-950 p-7 transition hover:border-brand-blue/60"
+                className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-ink-900 to-ink-950 transition hover:border-brand-yellow/50"
               >
                 <span
                   aria-hidden="true"
@@ -344,7 +352,18 @@ export default function Home() {
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <p className="text-sm font-semibold uppercase tracking-wider text-brand-yellow">
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#11182b]">
+                  <div aria-hidden="true" className="absolute inset-0 animate-pulse bg-gradient-to-br from-[#17223b] via-[#10172a] to-[#2a2340]" />
+                  <img
+                    src={project.previewImage ?? `https://s.wordpress.com/mshots/v1/${encodeURIComponent(project.url)}?w=1200`}
+                    alt={`First look at ${project.name} website`}
+                    loading="lazy"
+                    className="absolute inset-0 size-full object-contain object-top transition duration-500 group-hover:scale-[1.015]"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-ink-950/50 to-transparent" />
+                </div>
+                <div className="flex flex-1 flex-col p-7">
+                  <p className="text-sm font-semibold uppercase tracking-wider text-brand-yellow">
                   {project.niche}
                 </p>
                 <h3 className="mt-2 font-display text-3xl font-bold text-white">{project.name}</h3>
@@ -368,9 +387,35 @@ export default function Home() {
                   >
                     Visit site <span aria-hidden="true">↗</span>
                   </a>
+                  </div>
                 </div>
               </article>
             ))}
+          </div>
+          </div>
+
+          <div className="mt-20 grid items-center gap-8 rounded-3xl border border-white/10 bg-ink-900/60 p-5 sm:p-8 lg:grid-cols-[1fr_0.8fr]">
+            <div>
+              <p className="inline-block -skew-x-6 bg-brand-yellow px-3 py-1 font-display text-sm font-bold uppercase tracking-wider text-ink-950">
+                Meet Arbab
+              </p>
+              <h3 className="mt-4 font-display text-4xl font-extrabold uppercase italic leading-none tracking-tight text-white md:text-5xl">
+                A quick introduction
+              </h3>
+              <p className="mt-4 leading-7 text-slate-400">
+                Watch my short video to learn more about my work and how I help businesses build better websites.
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <iframe
+                className="aspect-[9/16] w-full max-w-[320px] rounded-2xl border border-white/10 bg-black shadow-2xl"
+                src="https://www.youtube-nocookie.com/embed/1v4-kB8T-Z0"
+                title="Arbab Khizar portfolio introduction"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
           </div>
 
           <div className="mt-24">
@@ -391,7 +436,7 @@ export default function Home() {
 
         {/* Experience */}
         <section id="experience" className="border-t border-white/5 bg-ink-900/50">
-          <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
+          <div className="mx-auto max-w-[min(100%-2rem,100rem)] px-4 py-24 sm:px-6">
             <SectionHeading
               eyebrow="Experience"
               title={
@@ -474,7 +519,7 @@ export default function Home() {
         </section>
 
         {/* Skills */}
-        <section id="skills" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
+        <section id="skills" className="mx-auto max-w-[min(100%-2rem,100rem)] px-4 py-24 sm:px-6">
           <SectionHeading
             eyebrow="Skills"
             title={
@@ -506,7 +551,7 @@ export default function Home() {
 
         {/* Contact */}
         <section id="contact" className="px-4 pb-24 sm:px-6">
-          <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-brand-blue via-indigo-700 to-ink-800 px-6 py-16 sm:px-12 md:py-20">
+          <div className="relative mx-auto max-w-[min(100%-2rem,100rem)] overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-brand-blue via-indigo-700 to-ink-800 px-6 py-16 sm:px-12 md:py-20">
             <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-60" />
             <div className="relative grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
               <div>
@@ -569,7 +614,7 @@ export default function Home() {
       </main>
 
       <footer className="border-t border-white/10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-8 text-sm text-slate-500 sm:flex-row sm:px-6">
+        <div className="mx-auto flex max-w-[min(100%-2rem,100rem)] flex-col items-center justify-between gap-4 px-4 py-8 text-sm text-slate-500 sm:flex-row sm:px-6">
           <p>© 2026 Arbab Khizar. All rights reserved.</p>
           <p className="flex items-center gap-2">
             <WordPressMark className="size-4 text-slate-400" />
@@ -580,3 +625,7 @@ export default function Home() {
     </>
   );
 }
+
+
+
+

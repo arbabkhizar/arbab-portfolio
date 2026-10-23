@@ -50,23 +50,43 @@ export type FeaturedProject = {
   url: string;
   description: string;
   tags: string[];
+  previewImage?: string;
 };
 
 export const featured: FeaturedProject[] = [
   {
-    name: "Roth IUL",
-    niche: "Financial consulting",
-    url: "https://rothiul.com",
+    name: "Course Habitat",
+    niche: "Online courses & digital learning",
+    url: "https://coursehabitat.com",
     description:
-      "A financial services site that educates visitors about Roth IUL strategies for tax-free retirement income, with lead-generation sections and dynamically populated podcast listings that guide users toward booking discovery calls.",
-    tags: ["WordPress", "Elementor", "JetEngine"],
+      "A polished online learning store for discovering affordable courses and digital resources, with clear course search, category browsing and trust-building highlights.",
+    tags: ["WordPress", "WooCommerce", "E-learning"],
+    previewImage: "/images/course-habitat-preview.png",
+  },
+  {
+    name: "4iT",
+    niche: "Managed IT services",
+    url: "https://4it.com.au",
+    description:
+      "A bold Sydney IT services homepage focused on clear service positioning, local coverage, and direct callback and booking actions.",
+    tags: ["WordPress", "IT Services", "Lead Gen"],
+    previewImage: "/images/4it-preview.png",
+  },
+  {
+    name: "Blue Sky Internet Solutions",
+    niche: "AI consulting & automation",
+    url: "https://www.blueskyinternetsolutions.ai",
+    description:
+      "A modern AI and automation services site with a clear revenue-focused message, bright visual identity and prominent conversion paths.",
+    tags: ["WordPress", "AI Services", "Automation"],
+    previewImage: "/images/blue-sky-preview.jpg",
   },
   {
     name: "Avalon Law",
     niche: "Personal injury law",
     url: "https://avalonlaw.com",
     description:
-      "A personal injury law firm website with structured service pages, testimonials and lead-generation forms, plus a bilingual English/Spanish system to reach a broader audience.",
+      "A personal injury law firm website with structured service pages, testimonials and lead-generation forms, plus a bilingual English/Spanish system.",
     tags: ["WordPress", "Elementor", "Bilingual"],
   },
   {
@@ -74,48 +94,32 @@ export const featured: FeaturedProject[] = [
     niche: "Property management",
     url: "https://senderopropertymanagement.com",
     description:
-      "A property management site serving Central Texas with rental listings, resident and owner portals, and service pages for tenant screening, rent collection and maintenance.",
+      "A property management site serving Central Texas with rental listings, resident and owner portals, and clear service information.",
     tags: ["WordPress", "Elementor", "Listings"],
-  },
-  {
-    name: "Real Estate PDX",
-    niche: "Real estate brokerage",
-    url: "https://realestatepdx.com",
-    description:
-      "A Portland real estate brokerage website with MLS-based property search, neighborhood exploration pages and guides for buying, selling and investing.",
-    tags: ["WordPress", "Elementor", "MLS Search"],
-  },
-  {
-    name: "Favored Live",
-    niche: "Video commerce",
-    url: "https://favored.live",
-    description:
-      "A modern platform site for livestream shopping and shoppable video, with interactive content sections and conversion-focused layouts for brands and creators.",
-    tags: ["WordPress", "Elementor", "UI/UX"],
   },
   {
     name: "Ink Whale Editorial",
     niche: "Editorial services",
     url: "https://inkwhaleeditorial.com",
     description:
-      "An editorial services site for authors and academics showcasing manuscript editing and proofreading, with testimonials and clear consultation flows.",
-    tags: ["WordPress", "Elementor"],
+      "An editorial services site for authors and academics showcasing manuscript editing and proofreading, with testimonials and consultation paths.",
+    tags: ["WordPress", "Elementor", "Editorial"],
   },
   {
-    name: "Home Repair Services of Arizona",
-    niche: "Home repair",
-    url: "https://homerepairservicesofarizona.com",
+    name: "Favored Live",
+    niche: "Video commerce",
+    url: "https://favored.live",
     description:
-      "A service-focused website for hot tub, fireplace, BBQ and water feature repairs, with estimate and contact sections that make booking easy for homeowners.",
-    tags: ["WordPress", "Elementor", "Lead Gen"],
+      "A platform site for livestream shopping and shoppable video, with interactive content sections for brands and creators.",
+    tags: ["WordPress", "Elementor", "UI/UX"],
   },
   {
-    name: "Eric Barnett",
-    niche: "Musician portfolio",
-    url: "https://eric-barnett.com",
+    name: "Real Estate PDX",
+    niche: "Real estate brokerage",
+    url: "https://realestatepdx.com",
     description:
-      "A personal portfolio for a musician featuring music, shows, videos and biography, with media integration to promote releases and upcoming performances.",
-    tags: ["WordPress", "Media"],
+      "A Portland real estate brokerage website with MLS property search, neighborhood pages and guides for buyers, sellers and investors.",
+    tags: ["WordPress", "Elementor", "MLS Search"],
   },
 ];
 
@@ -138,22 +142,21 @@ export type Site = {
   category: Category;
   niche?: string;
   url: string;
+  previewBlocked?: boolean;
+  previewImage?: string;
 };
 
 export const sites: Site[] = [
   { name: "Neptune Legal Services", category: "Legal", niche: "Law firm", url: "https://neptunelegalservices.com" },
-  { name: "Justicia Migratoria", category: "Legal", niche: "Immigration law", url: "https://justiciamigratoria.com" },
   { name: "Sharpstone Realty", category: "Real Estate", niche: "Property management", url: "https://sharpstonerealty.com/property-management" },
   { name: "Chula Extensions", category: "E-commerce", niche: "Beauty store & salon", url: "https://chulaextensions.com" },
   { name: "Boss Babes Boutiquee", category: "E-commerce", niche: "Fashion boutique", url: "https://www.bossbabesboutiquee.com" },
   { name: "Dukes Sport Shop", category: "E-commerce", niche: "Sports store", url: "https://dukessportshop.com" },
-  { name: "Mint Green", category: "E-commerce", niche: "Custom checkout & login", url: "https://mintgreen.tech" },
   { name: "Skin Alliance", category: "E-commerce", niche: "Beauty & health store", url: "https://skinalliance.pk" },
   { name: "Brian Boggs Chairmakers", category: "E-commerce", niche: "Product showcase", url: "https://brianboggschairmakers.com" },
   { name: "Boggs Bench", category: "E-commerce", niche: "Product showcase", url: "https://boggsbench.com" },
   { name: "One Speed Services", category: "Local Services", niche: "Cleaning services", url: "https://onespeedservices.com" },
   { name: "Clean Green Texas", category: "Local Services", niche: "Cleaning services", url: "https://cleangreentexas.com" },
-  { name: "Drain It Plumbing", category: "Local Services", niche: "Plumbing", url: "https://fixyourdrains.com" },
   { name: "Phoenix Arizona Roofing", category: "Local Services", niche: "Roofing", url: "https://phoenixarizonaroofing.com" },
   { name: "Arizona Stay Dry Roofing", category: "Local Services", niche: "Roofing", url: "https://azstaydryroofing.com" },
   { name: "OC Stay Dry Roofing", category: "Local Services", niche: "Roofing", url: "https://ocroofs.com" },
@@ -167,8 +170,6 @@ export const sites: Site[] = [
   { name: "Fitzbuild Lennox Head", category: "Local Services", url: "https://fitzbuildlennoxhead.com.au" },
   { name: "Nathan's Family Chiropractic", category: "Health & Wellness", niche: "Chiropractic", url: "https://nathansfamilychiropractic.com" },
   { name: "OC Myo Therapy", category: "Health & Wellness", niche: "Therapy clinic", url: "https://ocmyotherapy.com" },
-  { name: "Purely Skin Studio", category: "Health & Wellness", niche: "Skin studio", url: "https://purelyskinstudio.com" },
-  { name: "Lash Artist", category: "Health & Wellness", niche: "Beauty", url: "https://lashartist.com" },
   { name: "Valdez Muay Thai Kickboxing", category: "Health & Wellness", niche: "Martial arts gym", url: "https://valdezkickboxing.com" },
   { name: "SCMAGA", category: "Health & Wellness", niche: "Sports association", url: "https://scmaga.org" },
   { name: "Sereniva Health", category: "Health & Wellness", url: "https://serenivahealth.com" },
@@ -179,37 +180,26 @@ export const sites: Site[] = [
   { name: "Kreddo", category: "Business & Consulting", niche: "Consulting & bookings", url: "https://kreddo.bg" },
   { name: "Sourcing Squad", category: "Business & Consulting", niche: "Product sourcing", url: "https://sourcingsquad.co" },
   { name: "CLE Business", category: "Business & Consulting", niche: "Business services", url: "https://clebusiness.com" },
-  { name: "Hendrix Rentals", category: "Business & Consulting", niche: "Vehicle rentals", url: "https://hendrixrentals.com" },
-  { name: "Carify Enterprises", category: "Business & Consulting", niche: "Automotive", url: "https://carifyenterprise.com" },
-  { name: "Auto Profit Automation", category: "Business & Consulting", niche: "Automotive", url: "https://autoprofitautomation.com" },
   { name: "Mijo Entertainment", category: "Business & Consulting", niche: "Event services", url: "https://mijoent.com" },
   { name: "Cognitions", category: "Business & Consulting", url: "https://cognitions.co.uk" },
   { name: "Adreal Group", category: "Business & Consulting", url: "https://adrealgroup.com" },
-  { name: "Linkafrik Advisory", category: "Business & Consulting", url: "https://linkafrikadvisory.com" },
   { name: "Siache Foods", category: "Business & Consulting", url: "https://siachefoods.denodetech.com" },
   { name: "Jakaura", category: "Business & Consulting", url: "https://jakaura.com" },
-  { name: "4iT", category: "Agency & Tech", niche: "IT consulting", url: "https://4it.com.au" },
+  { name: "4iT", category: "Agency & Tech", niche: "IT consulting", url: "https://4it.com.au", previewBlocked: true, previewImage: "/images/4it-preview.png" },
   { name: "IT Visionists", category: "Agency & Tech", niche: "IT consulting", url: "https://itvisionists.com" },
   { name: "Gray Matter IT Solutions", category: "Agency & Tech", niche: "IT solutions", url: "https://graymatterits.com" },
   { name: "On The Verge", category: "Agency & Tech", niche: "Marketing agency", url: "https://ontheverge.io" },
   { name: "Impact 96", category: "Agency & Tech", niche: "Agency", url: "https://impact96.com" },
-  { name: "Ad Tech Gurus", category: "Agency & Tech", niche: "Ad tech", url: "https://adtechgurus.com" },
-  { name: "AIO Content", category: "Agency & Tech", niche: "AI services", url: "https://aiocontent.com" },
-  { name: "Write Here", category: "Agency & Tech", niche: "AI services", url: "https://writehere.ai" },
-  { name: "Blue Sky Internet Solutions", category: "Agency & Tech", niche: "AI services", url: "https://blueskyinternetsolutions.ai" },
+  { name: "Blue Sky Internet Solutions", category: "Agency & Tech", niche: "AI services", url: "https://www.blueskyinternetsolutions.ai" },
   { name: "Devtics Technologies", category: "Agency & Tech", niche: "Software company", url: "https://devtics.com" },
-  { name: "Devtics Offer", category: "Agency & Tech", niche: "Offer landing page", url: "https://offer.devtics.com" },
-  { name: "There Green", category: "Agency & Tech", niche: "Hosting services", url: "https://theregreen.com" },
-  { name: "Smart Play", category: "Agency & Tech", niche: "App landing page", url: "https://smart-play.app" },
   { name: "Webrula", category: "Agency & Tech", url: "https://webrula.com" },
   { name: "Lead Quran", category: "Education & Media", niche: "LMS platform", url: "https://leadquran.com" },
   { name: "GEA Safety & Health", category: "Education & Media", niche: "Safety training", url: "https://gea-srl.it" },
   { name: "Write Dissertation", category: "Education & Media", niche: "Academic writing", url: "https://writedissertation.com" },
   { name: "Taza Halaat", category: "Education & Media", niche: "News website", url: "https://tazahalaat.com" },
-  { name: "Course Habitat", category: "Education & Media", url: "https://coursehabitat.com" },
+  { name: "Course Habitat", category: "Education & Media", url: "https://coursehabitat.com", previewBlocked: true, previewImage: "/images/course-habitat-preview.png" },
   { name: "Torrian Scott", category: "Portfolio & Creative", niche: "Personal portfolio", url: "https://torrianscott.com" },
   { name: "Mia Sulak", category: "Portfolio & Creative", niche: "Personal portfolio", url: "https://miasulak.com" },
-  { name: "Thorn Design", category: "Portfolio & Creative", url: "https://thorndesign.site" },
 ];
 
 export const experience = [
@@ -264,3 +254,4 @@ export const skillGroups = [
   { title: "Frameworks & Tools", items: ["Bootstrap", "Git", "Bitbucket", "AWS", "MS Office"] },
   { title: "Expertise", items: ["Custom Plugins", "Theme Development", "Speed Optimization", "On-Page SEO", "Responsive Design", "API Integrations"] },
 ];
+

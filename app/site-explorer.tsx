@@ -9,14 +9,6 @@ function domainOf(url: string) {
   return url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
 }
 
-function initialsOf(name: string) {
-  const letters = name
-    .split(/\s+/)
-    .filter((word) => /^[A-Za-z0-9]/.test(word))
-    .map((word) => word[0]);
-  return letters.slice(0, 2).join("").toUpperCase();
-}
-
 export default function SiteExplorer() {
   const [active, setActive] = useState<Category | "All">("All");
   const [query, setQuery] = useState("");
@@ -24,7 +16,7 @@ export default function SiteExplorer() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return sites.filter(
+    return [...sites].reverse().filter(
       (site) =>
         (active === "All" || site.category === active) &&
         (!q ||
@@ -106,32 +98,63 @@ export default function SiteExplorer() {
           No websites match “{query}”.
         </p>
       ) : (
-        <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {shown.map((site) => (
             <li key={site.url}>
               <a
                 href={site.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-full items-center gap-4 rounded-2xl border border-white/10 bg-ink-900/60 p-4 transition hover:-translate-y-0.5 hover:border-brand-blue/60 hover:bg-ink-900"
+                aria-label={`Visit ${site.name} website`}
+                className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-ink-900/70 transition duration-300 hover:-translate-y-1 hover:border-brand-yellow/50 hover:shadow-2xl hover:shadow-brand-yellow/5"
               >
-                <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-blue to-indigo-600 font-display text-lg font-bold text-white">
-                  {initialsOf(site.name)}
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate font-semibold text-white">{site.name}</span>
-                  <span className="block truncate text-sm text-slate-400">
-                    {site.niche ?? site.category}
+                <div className="relative grid aspect-[4/3] place-items-center overflow-hidden bg-[#11182b]">
+                  {site.previewImage ? (
+                    <img
+                      src={site.previewImage}
+                      alt={`First look at ${site.name} website`}
+                      loading="lazy"
+                      className="absolute inset-0 size-full object-cover object-top transition duration-500 group-hover:scale-[1.015]"
+                    />
+                  ) : site.previewBlocked ? (
+                    <div className="relative z-10 flex size-full flex-col items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_top_right,_#243b73_0%,_#11182b_50%,_#080d1c_100%)] p-6 text-center">
+                      <div aria-hidden="true" className="absolute -right-10 -top-14 size-48 rounded-full border border-white/10" />
+                      <div aria-hidden="true" className="absolute -right-4 -top-8 size-36 rounded-full border border-white/10" />
+                      <span className="font-display text-5xl font-extrabold italic text-white">{site.name}</span>
+                      <span className="mt-3 text-sm text-slate-300">{site.niche ?? site.category}</span>
+                      <span className="mt-6 rounded-full border border-white/15 bg-ink-950/50 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-brand-yellow">
+                        Live preview unavailable
+                      </span>
+                    </div>
+                  ) : (
+                    <>
+                      <div aria-hidden="true" className="absolute inset-0 animate-pulse bg-gradient-to-br from-[#17223b] via-[#10172a] to-[#2a2340]" />
+                      <img
+                        src={`https://s.wordpress.com/mshots/v1/${encodeURIComponent(site.url)}?w=960`}
+                        alt={`First look at ${site.name} website`}
+                        loading="lazy"
+                        className="absolute inset-0 size-full object-contain object-top transition duration-500 group-hover:scale-[1.015]"
+                        onError={(event) => event.currentTarget.remove()}
+                      />
+                    </>
+                  )}
+                  <span className="absolute left-3 top-3 z-20 rounded-full border border-white/15 bg-ink-950/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white/90 backdrop-blur">
+                    {site.category}
                   </span>
-                  <span className="mt-0.5 block truncate text-xs text-brand-blue-light">
-                    {domainOf(site.url)}
+                </div>
+                <span className="flex flex-1 items-center gap-4 p-5">
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate font-display text-xl font-bold text-white transition group-hover:text-brand-yellow">{site.name}</span>
+                    <span className="mt-1 block truncate text-sm text-slate-400">
+                      {site.niche ?? site.category}
+                    </span>
+                    <span className="mt-2 block truncate text-xs text-brand-blue-light">
+                      {domainOf(site.url)}
+                    </span>
                   </span>
-                </span>
-                <span
-                  aria-hidden="true"
-                  className="text-slate-500 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand-yellow"
-                >
-                  ↗
+                  <span aria-hidden="true" className="grid size-10 shrink-0 place-items-center rounded-full border border-white/10 text-lg text-slate-300 transition group-hover:border-brand-yellow group-hover:bg-brand-yellow group-hover:text-ink-950">
+                    ↗
+                  </span>
                 </span>
               </a>
             </li>
