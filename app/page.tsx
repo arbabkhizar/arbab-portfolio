@@ -172,6 +172,13 @@ export default function Home() {
                 >
                   Let&apos;s build something
                 </a>
+                <a
+                  href="/resume/arbab-khizar-resume.pdf"
+                  download="Arbab-Khizar-Resume.pdf"
+                  className="rounded-full border border-brand-blue-light/50 px-7 py-3.5 font-bold text-brand-blue-light transition hover:border-brand-blue-light hover:bg-brand-blue/10"
+                >
+                  Download résumé <span aria-hidden="true">↓</span>
+                </a>
               </div>
             </div>
 
