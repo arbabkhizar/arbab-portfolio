@@ -13,7 +13,7 @@ export const profile = {
 export const stats = [
   { value: "5+", label: "Years of experience" },
   { value: "520+", label: "Projects delivered" },
-  { value: "48", label: "Live websites showcased" },
+  { value: "46", label: "Live websites showcased" },
   { value: "100%", label: "Client satisfaction" },
 ];
 
@@ -166,12 +166,10 @@ export const sites: Site[] = [
   { name: "Bay State Kitchen Gallery", category: "Local Services", niche: "Kitchen & interior design", url: "https://baystatekitchengallery.com" },
   { name: "Benny's Pooch Pawler", category: "Local Services", niche: "Pet services", url: "https://bennyspoochpawler.com" },
   { name: "Bark Bot", category: "Local Services", niche: "Services", url: "https://barkbot.com" },
-  { name: "Fitzbuild Lennox Head", category: "Local Services", url: "https://fitzbuildlennoxhead.com.au" },
   { name: "Nathan's Family Chiropractic", category: "Health & Wellness", niche: "Chiropractic", url: "https://nathansfamilychiropractic.com" },
   { name: "OC Myo Therapy", category: "Health & Wellness", niche: "Therapy clinic", url: "https://ocmyotherapy.com" },
   { name: "Valdez Muay Thai Kickboxing", category: "Health & Wellness", niche: "Martial arts gym", url: "https://valdezkickboxing.com" },
   { name: "SCMAGA", category: "Health & Wellness", niche: "Sports association", url: "https://scmaga.org" },
-  { name: "Sereniva Health", category: "Health & Wellness", url: "https://serenivahealth.com" },
   { name: "Faiz-e-Sehat", category: "Health & Wellness", url: "https://faizesehat.com" },
   { name: "Americana Tax Planning", category: "Business & Consulting", niche: "Tax consulting", url: "https://americanataxplanning.com" },
   { name: "Public Employees Direct", category: "Business & Consulting", niche: "Employee consulting", url: "https://publicemployeesdirect.org" },
